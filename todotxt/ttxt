@@ -1,0 +1,50 @@
+#!/usr/bin/env sh
+
+set -eu
+
+if [ "$#" -lt 1 ]; then
+    printf "Usage: ttxt <command>\nYour todo line should be send to stdin of ttxt.\n"
+    exit 1
+fi
+
+# remove pattern string
+remove () {
+    echo "$2" | sed "s/ $1//"
+}
+
+# remove all lists from string
+remove_lists () {
+    lists="+maybe +todo +active"
+    line="$1"
+
+    for list in $lists
+    do
+        line=$(remove "$list" "$line")
+    done
+
+    echo "$line"
+}
+
+read -r LINE
+case "$1" in
+    todo)
+        LINE=$(remove_lists "$LINE")
+        echo "$LINE +todo"
+        ;;
+    maybe)
+        LINE=$(remove_lists "$LINE")
+        echo "$LINE +maybe"
+        ;;
+    active)
+        LINE=$(remove_lists "$LINE")
+        echo "$LINE +active"
+        ;;
+    done)
+        echo "x $(date +%Y-%m-%d) $LINE"
+        ;;
+    *)
+        echo "Unknown command: $1"
+        exit 1
+        ;;
+esac
+

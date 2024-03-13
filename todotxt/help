@@ -1,0 +1,12 @@
+todo - mode for work with todo.txt[1] files
+
+Shortcuts:
+    ;h - show this help
+    ;n - add new task
+    ;s - sort tasks in file
+    ;t - move task in todo list
+    ;m - move task in maybe list
+    ;a - move task in active list
+    ;d - mark task as done
+
+1: https://github.com/todotxt/todo.txt
