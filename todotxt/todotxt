@@ -1,9 +1,0 @@
-map ;h :!$PAGER ./help
-
-map ;n 0:r!date +\%Y-\%m-\%dA 
-map ;s :%!sort
-
-map ;t :.!./ttxt todo
-map ;m :.!./ttxt maybe
-map ;a :.!./ttxt active
-map ;d :.!./ttxt done
